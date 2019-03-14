@@ -12,6 +12,7 @@ mod a {
 }
 
 // Do not modify this function.
+use a::MyTrait;
 fn main() {
     let x = a::MyType;
     x.foo();

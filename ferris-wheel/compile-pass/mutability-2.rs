@@ -2,5 +2,5 @@
 
 pub fn main() {
     let x = 10;
-    *x = 20;
+    let x = 20;
 }

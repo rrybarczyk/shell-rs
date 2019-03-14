@@ -7,7 +7,7 @@ enum MyEnum {
 }
 
 fn matcher(val: &MyEnum) -> &str {
-    match *val {
+    match val {
         MyEnum::A(string) => string.as_str(),
         MyEnum::B(string) => string.as_str()
     }

@@ -16,7 +16,11 @@ fn do_b() -> Result<u32, ErrorB> {
 }
 
 fn do_both() -> Result<(u16, u32), Error> {
-    Ok((do_a(), do_b()))
+    match (do_a(), do_b()) {
+        (Err(err), _) => Err(Error::A(err)),
+        (_, Err(err)) => Err(Error::B(err)),
+        (Ok(a), Ok(b)) => Ok((a, b)),
+    }
 }
 
 fn main() { }
