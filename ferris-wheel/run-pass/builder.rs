@@ -5,6 +5,48 @@ struct Builder {
     number: Option<usize>,
 }
 
+impl Builder {
+    fn string<T: std::string::ToString>(&self, s: T) -> Self {
+        Builder {
+            string: Some(s.to_string()),
+            number: self.number,
+        }
+    }
+
+    fn number(&self, n: usize) -> Self {
+        Builder {
+            string: self.string.to_owned(),
+            number: Some(n),
+        }
+    }
+}
+
+impl Default for Builder {
+    fn default() -> Self {
+        Builder {
+            string: None,
+            number: None,
+        }
+    }
+}
+
+impl std::string::ToString for Builder {
+    fn to_string(&self) -> String {
+        match (self.string.to_owned(), self.number) {
+            (Some(s), None) => s,
+            (None, Some(n)) => n.to_string(),
+            (Some(s), Some(n)) => {
+                let mut new_str = String::new();
+                new_str.push_str(&s);
+                new_str.push_str(" ");
+                new_str.push_str(&n.to_string());
+                new_str
+            },
+            (None, None) => String::from(""),
+        }
+    }
+}
+
 // Do not modify this function.
 fn main() {
     let empty = Builder::default().to_string();

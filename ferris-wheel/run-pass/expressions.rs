@@ -11,3 +11,11 @@ pub fn main() {
     assert_eq!(max(1u8, 3), 3);
     assert_eq!(max(IntWrapper(120), IntWrapper(248)), IntWrapper(248));
 }
+
+fn max<T: PartialOrd>(t1: T, t2: T) -> T {
+    if t1 <= t2 {
+        t2
+    } else {
+        t1
+    }
+}
