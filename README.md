@@ -7,18 +7,18 @@ Assignment 1 from the [CS140 course](https://cs140e.sergio.bz/assignments/1-shel
 - [x] `run-pass` - modify programs to pass assertions
 - [ ] `questions` - answer Phase 0 questions
 
-## Phase 2: Oxidation (IP)
-### Subphase A: `stack-vec`
-### Subphase B: `volatile` (`!unimplemened()`)
-### Subphase C: `xmodem` (`!unimplemened()`)
-### Subphase D: `ttywrite` (`!unimplemened()`)
+## Phase 2: Oxidation
+- [x] Subphase A: `stack-vec`
+- [ ] Subphase B: `volatile`
+- [x] Subphase C: `xmodem` 
+- [ ] Subphase D: `ttywrite`
 
-## Phase 3: *Not* a Seashell (`!unimplemened()`)
-### Subphase A: Getting Started (`!unimplemened()`)
-### Subphase B: System Timer (`!unimplemened()`)
-### Subphase C: GPIO (`!unimplemened()`)
-### Subphase D: UART (`!unimplemened()`)
-### Subphase E: The Shell (`!unimplemened()`)
-
-
-## Phase 4: Boot 'em Up(`!unimplemened()`)
+## Phase 3: *Not* a Seashell
+- [ ] Subphase A: Getting Started
+- [ ] Subphase B: System Timer
+- [ ] Subphase C: GPIO
+- [ ] Subphase D: UART
+- [ ] Subphase E: The Shell
+     
+     
+## Phase 4: Boot 'em Up
