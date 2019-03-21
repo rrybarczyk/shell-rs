@@ -1,4 +1,4 @@
-use serial::core::{CharSize, BaudRate, StopBits, FlowControl};
+use serial::core::{BaudRate, CharSize, FlowControl, StopBits};
 
 pub fn parse_width(s: &str) -> Result<CharSize, &str> {
     match s {
@@ -6,7 +6,7 @@ pub fn parse_width(s: &str) -> Result<CharSize, &str> {
         "6" => Ok(CharSize::Bits6),
         "7" => Ok(CharSize::Bits7),
         "8" => Ok(CharSize::Bits8),
-        _ => Err("value must be >= 5 and <= 8")
+        _ => Err("value must be >= 5 and <= 8"),
     }
 }
 
@@ -14,7 +14,7 @@ pub fn parse_stop_bits(s: &str) -> Result<StopBits, &str> {
     match s {
         "1" => Ok(StopBits::Stop1),
         "2" => Ok(StopBits::Stop2),
-        _ => Err("value must '1' or '2'")
+        _ => Err("value must '1' or '2'"),
     }
 }
 
@@ -23,7 +23,7 @@ pub fn parse_flow_control(s: &str) -> Result<FlowControl, &str> {
         "none" => Ok(FlowControl::FlowNone),
         "software" => Ok(FlowControl::FlowSoftware),
         "hardware" => Ok(FlowControl::FlowHardware),
-        _ => Err("value must be 'none', 'software' (xon/xoff), or 'hardware' (rts/cts)")
+        _ => Err("value must be 'none', 'software' (xon/xoff), or 'hardware' (rts/cts)"),
     }
 }
 
