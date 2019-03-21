@@ -1,5 +1,5 @@
 # shelly
-Assignment 1 from the [CS140 course](https://cs140e.sergio.bz/assignments/1-shell/).
+Subphase 1 and 2 from Assignment 1 from the [CS140 course](https://cs140e.sergio.bz/assignments/1-shell/).
 
 ## Phase 1: `ferris-wheel` directory
 - [x] `compile-fail` - modify programs to fail
@@ -12,12 +12,3 @@ Assignment 1 from the [CS140 course](https://cs140e.sergio.bz/assignments/1-shel
 - [ ] Subphase B: `volatile`
 - [x] Subphase C: `xmodem` 
 - [x] Subphase D: `ttywrite`
-
-## Phase 3: *Not* a Seashell
-- [ ] Subphase A: Getting Started
-- [ ] Subphase B: System Timer
-- [ ] Subphase C: GPIO
-- [ ] Subphase D: UART
-- [ ] Subphase E: The Shell
-     
-## Phase 4: Boot 'em Up
