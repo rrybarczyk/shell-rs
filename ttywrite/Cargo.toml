@@ -1,6 +1,8 @@
 [package]
 name = "ttywrite"
 version = "0.1.0"
+authors = ["Sergio Benitez <sb@sergio.bz>", "Rachel Rybarczyk <rj@rybar.tech"]
+edition = "2018"
 
 [dependencies]
 structopt = "0.1.0"
