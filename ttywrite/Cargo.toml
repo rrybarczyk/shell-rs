@@ -2,7 +2,12 @@
 name = "ttywrite"
 version = "0.1.0"
 authors = ["Sergio Benitez <sb@sergio.bz>", "Rachel Rybarczyk <rj@rybar.tech"]
+description = "Write to TTY using the XMODEM protocol by default"
+license = "CC0-1.0"
+homepage = "https://github.com/rrybarczyk/shelly/tree/master/ttywrite"
+readme = "README.md"
 edition = "2018"
+keywords = ["tty", "cli", "system", "serial"]
 
 [dependencies]
 structopt = "0.1.0"
