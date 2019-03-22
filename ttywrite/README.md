@@ -33,7 +33,7 @@ $ source test.sh
 ```
 
 The output should be:
-``
+```
 Compiling project with 'cargo build'...
     Finished dev [unoptimized + debuginfo] target(s) in 0.09s
 Opening PTYs...
