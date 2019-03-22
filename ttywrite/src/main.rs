@@ -77,22 +77,13 @@ struct Opt {
     raw: bool,
 }
 
-fn interact<T: SerialDevice>(port: &mut T, buffer: &[u8], raw: bool) -> std::io::Result<()> {
-    if raw {
-        port.write(&buffer[..])?;
-    } else {
-        Xmodem::transmit_with_progress(&buffer[..], port, progress_fn)?;
-    }
-    Ok(())
-}
-
 fn progress_fn(progress: Progress) {
     dbg!(progress);
 }
 
 fn main() {
     use std::fs::File;
-    use std::io::{self, BufReader, Read};
+    use std::io::{self, BufReader};
 
     let opt = Opt::from_args();
 
@@ -110,24 +101,23 @@ fn main() {
     settings.set_stop_bits(opt.stop_bits);
     settings.set_flow_control(opt.flow_control);
 
-    // Receive data to send
-    let mut buffer = Vec::new();
-    // bytes_read is a Result type containing the number of bytes read in
-    let bytes_read: Result<usize, std::io::Error> = match opt.input {
-        // Read data from file
+    port.write_settings(&settings).expect("bad settings write");
+
+    // want reader to be io::Read type so we can use io::copy
+    let mut reader: Box<io::Read> = match opt.input {
         Some(f) => {
             let file = File::open(f).expect("bad file read");
-            let mut buf_reader = BufReader::new(file);
-            buf_reader.read_to_end(&mut buffer)
+            Box::new(BufReader::new(file))
         }
-        None => {
-            // Read data from stdin
-            let stdin = io::stdin();
-            let mut handle = stdin.lock();
-            handle.read_to_end(&mut buffer)
-        }
+        None => Box::new(BufReader::new(io::stdin())),
     };
 
-    println!("wrote {} bytes to input", bytes_read.unwrap());
-    interact(&mut port, &buffer, opt.raw).expect("could not interact with serial port");
+    let bytes_copied = if opt.raw {
+        io::copy(&mut reader, &mut port).expect("bad copy from reader to writer")
+    } else {
+        Xmodem::transmit_with_progress(&mut reader, &mut port, progress_fn)
+            .expect("bad xmodem transmit") as u64
+    };
+
+    println!("wrote {} bytes to input", bytes_copied);
 }
